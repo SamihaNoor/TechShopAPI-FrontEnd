@@ -1,0 +1,303 @@
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Profits</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+    <script src="../contents/js/jquery-3.6.0.js"></script>
+
+    <script src="../contents/js/bootstrap.min.js"></script>
+    <link href="../contents/css/bootstrap.css" rel="stylesheet" />
+    <script src="../contents/js/bootstrap.bundle.min.js"></script>
+    <link href="../contents/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../contents/css/icofont.min.css" rel="stylesheet">
+	<link href="../contents/css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+</head>
+<body>
+    <header id="header" class="">
+        <div class="container d-flex align-items-center">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-1">
+
+                </div>
+
+                <div class="col-12 col-lg-12">
+                    <nav class="nav-menu d-none d-lg-block">
+
+                        <ul>
+                            <li class="dropdown-header">
+                                <a href="AdminDashboard.html">Dashboard</a>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="AdminProfile.html">Profile</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveAdmins.html">Admins</a>
+                                <ul>
+                                    <li><a href="ActiveAdmins.html">Active Admins</a></li>
+                                    <li><a href="NewAdmin.html">New Admin</a></li>
+                                    <li><a href="RestrictedAdmins.html">Restricted Admins</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveSalesExecutives.html">Sales Executives</a>
+                                <ul>
+                                    <li><a href="ActiveSalesExecutives.html">Active Sales Executive</a></li>
+                                    <li><a href="NewSalesExecutive.html">New Sales Executive</a></li>
+                                    <li><a href="RestrictedSalesExecutives.html">Restricted Sales Executive</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveBuyingAgents.html">BuyingAgents</a>
+                                <ul>
+                                    <li><a href="ActiveBuyingAgents.html">Active Buying Agents</a></li>
+                                    <li><a href="NewBuyingAgent.html">New Buying Agent</a></li>
+                                    <li><a href="RestrictedBuyingAgents.html">Restricted Buying Agents</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ProductList.html">Products</a>
+                                <ul>
+                                    <li><a href="ProductList.html">Products</a></li>
+                                    <li><a href="NewProduct.html">New Product</a></li>
+                                    <li><a href="OldProductList.html">Used Products</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="PurchaseList.html">Purchases</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveCustomers.html">Customers</a>
+                                <ul>
+                                    <li><a href="ActiveCustomers.html">Active Customers</a></li>
+                                    <li><a href="RestrictedCustomers.html">Restricted Customers</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="Sales.html">Sales</a>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="Profits.html">Profits</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="UpdateAdminProfile.html">Settings</a>
+                                <ul>
+                                    <li><a href="UpdateAdminProfile.html">Update Profile</a></li>
+                                    <li><a href="AdminChangePassword.html">Change Password</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-header">
+                                <a href="Logout">Logout</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <main id="main ">
+        <div class="container">
+            <br /><br /><br /><br /><br /> <br />
+            <div class="row mt-2 justify-content-center">
+                <div class="col-12 col-lg-8 text-center">
+                    <div id="category"></div>
+                    <br /><br />
+                    <div id="brand"></div>
+    
+                </div>
+            </div>
+        </div>
+    </main>
+<main id="main ">
+    <div class="container">
+        <br /><br /><br /><br /><br />
+        <div class="row mt-2 justify-content-center">
+
+            <div class="row mt-2 justify-content-center">
+                <div class="col-12 col-lg-10 text-center">
+                    <!--<h5>Datewise Sales</h5>-->
+                    </div>
+                    <div class="col-12 col-lg-5 text-center">
+							<!--<table>
+                                <tr>
+                                    <td align="right"><label class="col-form-label-sm">From</label></td>
+                                    <td width="20%"><input type="date" name="StartDate" id="StartDate" class="form-control"/></td>
+                                    <td align="right"><label class="col-form-label-sm">To</label></td>
+                                    <td width="20%"><input type="date" name="EndDate" id="EndDate" class="form-control"/></td>
+                                    <td width="1%">
+                                        <button id="Loadbtn" class="btn-info">Load</button>
+                                    </td>
+                                </tr>
+                            </table>-->
+                    </div>
+                    <div class="col-12 col-lg-10 text-center">
+                        <div id="datewise"></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</main>
+                <script>
+				if(Cookies.get('type')==1)
+{
+                        $(document).ready(function () {
+                            $.getJSON("http://localhost:63888/api/sales_log/getdataprofitscategory", function (data) {
+                                var Names = []
+                                var Qts = []
+                                for (var i = 0; i < data.length; i++) {
+                                    Names.push(data[i].name);
+                                    Qts.push(data[i].count);
+                                }
+
+                                Highcharts.chart('category', {
+                                    chart: {
+                                        type: 'column'
+                                    },
+                                    title: {
+                                        text: 'Most Popular Categories'
+                                    },
+                                    subtitle: {
+                                        text: ''
+                                    },
+                                    xAxis: {
+                                        categories: Names
+                                    },
+                                    yAxis: {
+                                        title: {
+                                            text: 'Amount'
+                                        }
+                                    },
+                                    plotOptions: {
+                                        line: {
+                                            dataLabels: {
+                                                enabled: true
+                                            },
+                                            enableMouseTracking: false
+                                        }
+                                    },
+                                    series: [{
+                                        name: 'Total',
+                                        colorByPoint: true,
+                                        data: Qts
+                                    }]
+                                });
+                            });
+                        });
+
+
+                        $(document).ready(function () {
+                            $.getJSON("http://localhost:63888/api/sales_log/getdataprofitsproductname", function (data) {
+                                var Names = []
+                                var Qts = []
+                                for (var i = 0; i < data.length; i++) {
+                                    Names.push(data[i].name);
+                                    Qts.push(data[i].count);
+                                }
+
+                                Highcharts.chart('brand', {
+                                    chart: {
+                                        type: 'bar'
+                                    },
+                                    title: {
+                                        text: 'Most Popular Brands'
+                                    },
+                                    subtitle: {
+                                        text: ''
+                                    },
+                                    xAxis: {
+                                        categories: Names
+                                    },
+                                    yAxis: {
+                                        title: {
+                                            text: 'Amount'
+                                        }
+                                    },
+                                    plotOptions: {
+                                        line: {
+                                            dataLabels: {
+                                                enabled: true
+                                            },
+                                            enableMouseTracking: false
+                                        }
+                                    },
+                                    series: [{
+                                        name: 'Total',
+                                        colorByPoint: true,
+                                        data: Qts
+                                    }]
+                                });
+                            });
+                        });
+/*$(#Loadbtn).click(function () {
+	$.ajax({
+		dataType: "json",
+		url: "http://localhost:63888/api/sales_logs",
+		data:{
+				"StartDate":$("#StartDate").val(),
+				"EndDate":$("#EndDate").val()
+			},
+		complete:function(xmlHttp,status){
+				var Names = []
+                var Qts = []
+                for (var i = 0; i < data.length; i++) 
+				{
+					Names.push(data[i].name);
+					Qts.push(data[i].count);
+				}
+				Highcharts.chart('datewise', {
+					chart: {
+						type: 'column'
+					},
+					title: {
+						text: 'Most Popular Categories'
+					},
+					subtitle: {
+						text: ''
+					},
+					xAxis: {
+						categories: Names
+					},
+					yAxis: {
+						title: {
+							text: 'Quantity'
+						}
+					},
+					series: [{
+						name: 'Total',
+						colorByPoint: true,
+						data: Qts
+					}]
+				});
+		}
+	});
+});*/
+}
+else if(Cookies.get('type')==2)
+{
+//se
+}
+else if(Cookies.get('type')==3)
+{
+//by
+}
+else if(Cookies.get('type')==4)
+{
+//cu
+}
+else
+{
+	window.location = "login.html";
+}
+                    </script>
+</body>

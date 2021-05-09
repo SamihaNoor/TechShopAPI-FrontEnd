@@ -1,0 +1,340 @@
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Active Admins</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+    <script src="../contents/js/jquery-3.6.0.js"></script>
+
+    <script src="../contents/js/bootstrap.min.js"></script>
+    <link href="../contents/css/bootstrap.css" rel="stylesheet" />
+    <script src="../contents/js/bootstrap.bundle.min.js"></script>
+    <link href="../contents/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../contents/css/icofont.min.css" rel="stylesheet">
+	<link href="../contents/css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+	<style>
+
+    .table-view tr:hover {
+        color: #212529;
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+
+    .table-view {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+    }
+
+        .table-view th,
+        .table-view td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+		
+		.load {width: 200px;}
+		.box {width: 933px;}
+	</style>
+	
+	
+</head>
+<body>
+    <header id="header" class="">
+        <div class="container d-flex align-items-center">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-1">
+
+                </div>
+
+                <div class="col-12 col-lg-12">
+                    <nav class="nav-menu d-none d-lg-block">
+
+                        <ul>
+                            <li class="dropdown-header">
+                                <a href="/AdminDashboard/">Dashboard</a>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="/AdminProfile">Profile</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveAdmins.html">Admins</a>
+                                <ul>
+                                    <li><a href="ActiveAdmins.html">Active Admins</a></li>
+                                    <li><a href="NewAdmin.html">New Admin</a></li>
+                                    <li><a href="RestrictedAdmins.html">Restricted Admins</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveSalesExecutives.html">Sales Executives</a>
+                                <ul>
+                                    <li><a href="ActiveSalesExecutives.html">Active Sales Executive</a></li>
+                                    <li><a href="NewSalesExecutive.html">New Sales Executive</a></li>
+                                    <li><a href="RestrictedSalesExecutives.html">Restricted Sales Executive</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveBuyingAgents.html">BuyingAgents</a>
+                                <ul>
+                                    <li><a href="ActiveBuyingAgents.html">Active Buying Agents</a></li>
+                                    <li><a href="NewBuyingAgent.html">New Buying Agent</a></li>
+                                    <li><a href="RestrictedBuyingAgents.html">Restricted Buying Agents</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ProductList.html">Products</a>
+                                <ul>
+                                    <li><a href="ProductList.html">Products</a></li>
+                                    <li><a href="NewProduct.html">New Product</a></li>
+                                    <li><a href="OldProductList.html">Used Products</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="PurchaseList.html">Purchases</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveCustomers.html">Customers</a>
+                                <ul>
+                                    <li><a href="ActiveCustomers.html">Active Customers</a></li>
+                                    <li><a href="RestrictedCustomers.html">Restricted Customers</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="Sales.html">Sales</a>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="Profits.html">Profits</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="UpdateAdminProfile.html">Settings</a>
+                                <ul>
+                                    <li><a href="UpdateAdminProfile.html">Update Profile</a></li>
+                                    <li><a href="AdminChangePassword.html">Change Password</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-header">
+                                <a href="Logout">Logout</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </header>
+	<main id="main ">
+    <div class="container">
+        <br /><br /><br /><br /><br />
+        <div class="row mt-2 justify-content-center">
+            <div class="col-12 col-lg-12 text-center">
+				<table>
+                    <tr>
+                        <td width="2%"><button id="loadbtn" class="btn btn-primary load">Load All</button></td>
+                        
+                        <td width="20%">
+                            <input type="text" id="SearchByName" class="form-control box" placeholder="Search by Name">
+                        </td>
+                    </tr>
+                </table>
+				<br /><br />
+            </div>
+            <div class="col-12 col-lg-12 text-center">
+			<h1 id="err"></h1>
+                <table id="ActiveAdmins" class="table-view">
+                    <thead>
+						<tr>
+							<th></th>
+							<th>Full Name</th>
+							<th>User Name</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Address</th>
+							<th>Joining Date</th>
+							<th>Last Updated</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+if(Cookies.get('type')==1)
+{
+        $(document).ready(function(){
+	
+			$.ajax({
+				url:"http://localhost:63888/api/admins",
+				method: "GET",
+				headers:{
+					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
+				},
+				complete:function(xmlHttp,status){
+				//console.log(xmlHttp.responseText);
+					if(xmlHttp.status==200)
+					{
+						var btn = "Block";
+						var str='';
+						var data=xmlHttp.responseJSON;
+						for (var i = 0; i < data.length; i++) {
+							
+							str+="<tr>"+
+								"<td><img src='../contents/uploads/admins/"+data[i].profilePic+"' alt='' height='50' width='50' /></td>"+
+								"<td>"+data[i].fullName+"</td>"+
+								"<td>"+data[i].userName+"</td>"+
+								"<td>"+data[i].email+"</td>"+
+								"<td>"+data[i].phone+"</td>"+
+								"<td>"+data[i].address+"</td>"+
+								"<td>"+data[i].joiningDate+"</td>"+
+								"<td>"+data[i].lastUpdated+"</td>"+
+								"<td><button type='button' onclick='BlockAdmin(this);' class='btn btn-danger' data-id='"+data[i].id+"'>"+btn+"</button></td>" +
+								"</tr>";
+								
+						}
+
+						$("#ActiveAdmins tbody").html(str);
+					}
+					else
+					{
+						$("#err").html(xmlHttp.status+":"+xmlHttp.status);
+					}
+				}
+			});
+		});
+
+$("#loadbtn").click(function(){
+
+		$.ajax({
+				url:"http://localhost:63888/api/admins",
+				method: "GET",
+				headers:{
+					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
+				},
+				complete:function(xmlHttp,status){
+				//console.log(xmlHttp.responseText);
+					if(xmlHttp.status==200)
+					{
+						var btn = "Block";
+						var str='';
+						var data=xmlHttp.responseJSON;
+						for (var i = 0; i < data.length; i++) {
+							
+							str+="<tr>"+
+								"<td><img src='../contents/uploads/admins/"+data[i].profilePic+"' alt='' height='50' width='50' /></td>"+
+								"<td>"+data[i].fullName+"</td>"+
+								"<td>"+data[i].userName+"</td>"+
+								"<td>"+data[i].email+"</td>"+
+								"<td>"+data[i].phone+"</td>"+
+								"<td>"+data[i].address+"</td>"+
+								"<td>"+data[i].joiningDate+"</td>"+
+								"<td>"+data[i].lastUpdated+"</td>"+
+								"<td><button type='button' onclick='BlockAdmin(this);' class='btn btn-danger' data-id='"+data[i].id+"'>"+btn+"</button></td>" +
+								"</tr>";
+								
+						}
+
+						$("#ActiveAdmins tbody").html(str);
+					}
+					else
+					{
+						$("#err").html(xmlHttp.status+":"+xmlHttp.status);
+					}
+				}
+			});
+		});
+
+	$("#SearchByName").keyup(function(){
+
+		$.ajax({
+				url:"http://localhost:63888/api/admins/name",
+				method: "GET",
+				headers:{
+					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
+				},
+				data:{
+					"Name":$("#SearchByName").val()
+				},
+				complete:function(xmlHttp,status){
+				//console.log(xmlHttp.responseText);
+					if(xmlHttp.status==200)
+					{
+						var btn = "Block";
+						var str='';
+						var data=xmlHttp.responseJSON;
+						for (var i = 0; i < data.length; i++) {
+							
+							str+="<tr>"+
+								"<td><img src='../contents/uploads/admins/"+data[i].profilePic+"' alt='' height='50' width='50' /></td>"+
+								"<td>"+data[i].fullName+"</td>"+
+								"<td>"+data[i].userName+"</td>"+
+								"<td>"+data[i].email+"</td>"+
+								"<td>"+data[i].phone+"</td>"+
+								"<td>"+data[i].address+"</td>"+
+								"<td>"+data[i].joningDate+"</td>"+
+								"<td>"+data[i].lastUpdated+"</td>"+
+								"<td><button type='button' onclick='BlockAdmin(this);' class='btn btn-danger' data-id='"+data[i].id+"'>"+btn+"</button></td>" +
+								"</tr>";
+								
+						}
+
+						$("#ActiveAdmins tbody").html(str);
+					}
+					else
+					{
+						$("#err").html(xmlHttp.status+":"+xmlHttp.status);
+					}
+				}
+			});
+	});
+
+
+function BlockAdmin(ctl) {
+    var id = $(ctl).data("id");
+            
+    $.ajax({
+        url: "http://localhost:63888/api/admins/BlockAdmin/" + id,
+        method: "PUT",
+		headers:{
+					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
+		},
+        complete:function(xmlHttp,status){
+			//console.log(xmlHttp.status);	
+			if(xmlHttp.status==200)
+			{
+				window.location.href ="RestrictedAdmins.html";
+			}
+			else
+			{
+				$("#err").html(xmlHttp.status+":"+xmlHttp.statusText);
+			}
+        }
+    });
+}
+
+}
+else if(Cookies.get('type')==2)
+{
+//se
+}
+else if(Cookies.get('type')==3)
+{
+//by
+}
+else if(Cookies.get('type')==4)
+{
+//cu
+}
+else
+{
+	window.location = "login.html";
+}
+
+</script>
+</body>

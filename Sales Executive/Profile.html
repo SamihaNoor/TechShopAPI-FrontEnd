@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Executive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="./Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="./Contents/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="./Contents/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/aos/aos.css" rel="stylesheet">
+    <link href="./Contents/CSS_Files/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header {
+            overflow: hidden;
+            background-color: #f1f1f1;
+            padding: 40px 10px;
+        }
+
+            .header a {
+                float: left;
+                color: black;
+                text-align: center;
+                padding: 12px;
+                text-decoration: none;
+                font-size: 18px;
+                line-height: 25px;
+                border-radius: 4px;
+            }
+
+                .header a.logo {
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+
+                .header a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .header a.active {
+                    background-color: dodgerblue;
+                    color: white;
+                }
+
+        .header-right {
+            float: right;
+        }
+
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Sales Executive</a>
+        <div class="header-right">
+            <!-- <a class="active" id="logout" href="">Logout</a>  -->
+             <button type="button" class="btn-danger" id="logout">Logout</button> 
+          
+        </div>
+    </div>
+
+    <div class="w3-sidebar w3-bar-block w3-light-grey w3-card" style="width:130px">
+        <h5 class="w3-bar-item">Menu</h5>
+         
+
+  
+        <a href="Profile.html"class="w3-bar-item w3-button tablink"> Profile </a>
+        <a href="Products.html"class="w3-bar-item w3-button tablink"> Products </a>
+        <a href="SalesCart.html"class="w3-bar-item w3-button tablink"> Sales Cart </a>
+        <a href="SellChart.html"class="w3-bar-item w3-button tablink"> Chart </a>
+    </div>
+
+    <div style="margin-left:130px" id="load">
+
+
+
+  
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+
+
+    $(document).ready(function(){
+     if(Cookies.get("Authorization") == null){ window.location = "Login.html";}
+
+    var body = $("#load");
+$.ajax({
+    type: "get",
+    url:"http://localhost:54047//api/SalesExecutive/Profile",
+    datatype: 'json',
+    headers:{
+            "Authorization":"basic "+Cookies.get("Authorization")
+        },
+ 
+
+    complete:function(xmlHttp,status){
+        if(xmlHttp.status == 200)
+        {
+           // var oldProducts = "<table border='1' id='oldProductsList' cellspacing='0'><tr><th>Customer ID</th><th>Product Name</th><th>Product Description</th><th>Requested Price</th><th>Category</th><th>Brand</th><th>Features</th><th>Quantity</th><th>Options</th></tr>";
+            var profileData = xmlHttp.responseJSON;
+            var profile;
+            console.log(profileData.length);
+            for (var i = 0; i < profileData.length; i++) {
+               
+                 profile="<table width='25%' class='table'><tr> <td>Full Name:</td> <td>"+profileData[i].FullName+"</td> </tr>   <tr> <td>Userame:</td> <td>"+profileData[i].UserName+"</td> </tr>   <tr> <td>Email:</td> <td>"+profileData[i].Email+"</td> </tr>  <tr> <td>Phone:</td> <td>"+profileData[i].Phone+"</td></tr>  <tr> <td>Address:</td> <td>"+profileData[i].Address+"</td> </tr>  </table>";
+                     
+            }
+           // oldProducts += "</table>"
+           body.append(profile);
+        }
+        else
+        {
+            $("#msg").html(xmlHttp.status+":"+xmlHttp.statusText);
+        }
+    }
+
+
+});
+});
+
+</script>
+
+<script>
+    $("#logout").click(function(){
+  window.location="Login.html";
+  //Cookies.set("Authorization",null);
+  Cookies.remove("Authorization");
+  
+});
+</script>

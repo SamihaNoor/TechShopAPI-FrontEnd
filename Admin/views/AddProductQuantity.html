@@ -1,0 +1,295 @@
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Add Quantity</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+    <script src="../contents/js/jquery-3.6.0.js"></script>
+
+    <script src="../contents/js/bootstrap.min.js"></script>
+    <link href="../contents/css/bootstrap.css" rel="stylesheet" />
+    <script src="../contents/js/bootstrap.bundle.min.js"></script>
+    <link href="../contents/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../contents/css/icofont.min.css" rel="stylesheet">
+	<link href="../contents/css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+	<style>
+
+    .table-view tr:hover {
+        color: #212529;
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+
+    .table-view {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+    }
+
+        .table-view th,
+        .table-view td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+		
+		.save{width:100px;}
+	</style>
+	
+	
+</head>
+<body>
+    <header id="header" class="">
+        <div class="container d-flex align-items-center">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-1">
+
+                </div>
+
+                <div class="col-12 col-lg-12">
+                    <nav class="nav-menu d-none d-lg-block">
+
+                        <ul>
+                            <li class="dropdown-header">
+                                <a href="/AdminDashboard/">Dashboard</a>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="/AdminProfile">Profile</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveAdmins.html">Admins</a>
+                                <ul>
+                                    <li><a href="ActiveAdmins.html">Active Admins</a></li>
+                                    <li><a href="NewAdmin.html">New Admin</a></li>
+                                    <li><a href="RestrictedAdmins.html">Restricted Admins</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveSalesExecutives.html">Sales Executives</a>
+                                <ul>
+                                    <li><a href="ActiveSalesExecutives.html">Active Sales Executive</a></li>
+                                    <li><a href="NewSalesExecutive.html">New Sales Executive</a></li>
+                                    <li><a href="RestrictedSalesExecutives.html">Restricted Sales Executive</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveBuyingAgents.html">BuyingAgents</a>
+                                <ul>
+                                    <li><a href="ActiveBuyingAgents.html">Active Buying Agents</a></li>
+                                    <li><a href="NewBuyingAgent.html">New Buying Agent</a></li>
+                                    <li><a href="RestrictedBuyingAgents.html">Restricted Buying Agents</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ProductList.html">Products</a>
+                                <ul>
+                                    <li><a href="ProductList.html">Products</a></li>
+                                    <li><a href="NewProduct.html">New Product</a></li>
+                                    <li><a href="OldProductList.html">Used Products</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="PurchaseList.html">Purchases</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveCustomers.html">Customers</a>
+                                <ul>
+                                    <li><a href="ActiveCustomers.html">Active Customers</a></li>
+                                    <li><a href="RestrictedCustomers.html">Restricted Customers</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="Sales.html">Sales</a>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="Profits.html">Profits</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="UpdateAdminProfile.html">Settings</a>
+                                <ul>
+                                    <li><a href="UpdateAdminProfile.html">Update Profile</a></li>
+                                    <li><a href="AdminChangePassword.html">Change Password</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-header">
+                                <a href="Logout">Logout</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </header>
+	<main id="main ">
+    <div class="container">
+        <br /><br /><br /><br /><br />
+        <div class="row mt-2 justify-content-center">
+            <div class="col-12 col-lg-10 text-center">
+            <table id="info" class="table-view">
+			</table>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+if(Cookies.get('type')==1)
+{
+        $(document).ready(function(){
+	
+		const myurl = new URL(window.location.href);
+		var id = myurl.searchParams.get('id');
+		
+		$.ajax({
+		url:"http://localhost:63888/api/products/"+id,
+		method: "GET",
+		headers:{
+					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
+		},
+		complete:function(xmlHttp,status)
+		{
+			if(xmlHttp.status==200)
+			{
+				var str='';
+				var m = 'Save';
+				var data=xmlHttp.responseJSON;
+				str+="<tr>"+
+							"<td rowspan='18' align='right'>"+
+                                "<img src='../contents/uploads/products/"+data.images+"' alt='' height='450' width='450' />"+
+                            "</td>"+
+                        "</tr>"+
+                        "<tr><td><label class='col-form-label-sm'>Product</label></td>"+
+                            "<td><input id='productName' class='form-control col-form-label-sm' readonly value='"+data.productName+"'></td>"+
+                        "</tr>"+
+                        "<tr><td><label class='col-form-label-sm'>Category</label></td>"+
+                            "<td><input id='category' class='form-control col-form-label-sm' readonly value='"+data.category+"'>"+
+                            "</td>"+
+                        "</tr>"+
+                        "<tr><td><label class='col-form-label-sm'>Brand</label></td>"+
+								"<td><input id='brand' class='form-control col-form-label-sm' name='brand' readonly value='"+data.brand+"'>"+
+                                "</td>"+
+                        "</tr>"+		
+                        "<tr><td><label class='col-form-label-sm'>Buying Price</label></td>"+
+                            "<td><input id='buyingPrice' class='form-control col-form-label-sm' readonly value='"+data.buyingPrice+"'></td>"+
+                        "</tr>"+
+						"<tr><td><label class='col-form-label-sm'>Selling Price</label></td>"+
+                            "<td><input id='sellingPrice' class='form-control col-form-label-sm' readonly value='"+data.sellingPrice+"'></td>"+
+                        "</tr>"+
+						"<tr><td><label class='col-form-label-sm'>Status</label></td>"+
+                            "<td><input id='status' class='form-control col-form-label-sm' readonly value='"+data.status+"'>"+
+							"</td>"+
+                        "</tr>"+
+                          "<tr><td><label class='col-form-label-sm'>Quantity</label></td>"+
+                            "<td><input id='quantity' class='form-control col-form-label-sm' readonly value='"+data.quantity+"'></td>"+
+                        "</tr>"+
+						"<tr><td><label class='col-form-label-sm'>New</label></td>"+
+                             "<td><input id='newQuantity' class='form-control col-form-label-sm'></td>"+
+                        "</tr>"+
+						"<tr><td><input id='discount' class='form-control col-form-label-sm' hidden readonly value='"+data.discount+"'></td>"+
+                             "<td><input id='tax' class='form-control col-form-label-sm' hidden readonly value='"+data.tax+"'></td>"+
+                        "</tr>"+
+						"<tr>"+
+                             "<td><input id='dateAdded' class='form-control' hidden readonly value='"+data.dateAdded+"'></td>"+
+							 "<td><input id='lastUpdated' class='form-control' hidden readonly value='"+data.lastUpdated+"'></td>"+
+                        "</tr>"+
+						"<tr><td><input id='features' class='form-control col-form-label-sm' hidden readonly value='"+data.features+"'></td>"+
+                             "<td><input id='productDescription' class='form-control col-form-label-sm' hidden readonly value='"+data.productDescription+"'></td>"+
+                        "</tr>"+
+						"<tr><td><input id='id' class='form-control' hidden readonly value='"+data.id+"'></td>"+
+                             "<td><input id='images' class='form-control' hidden readonly value='"+data.images+"'></td>"+
+                        "</tr>"+
+						"<tr><td colspan='2' align='center'><p id='sal' class='text-danger'></p></td>"+
+                        "</tr>"+
+						"<tr><td colspan='2' align='center'><button type='button' onclick='Save(this);' class='btn btn-warning save'>"+m+"</button></td>"+
+                        "</tr>";
+				
+
+				$("#info").html(str);
+			}
+			else
+			{
+				$("#err").html(xmlHttp.status+":"+xmlHttp.statusText);
+			}
+		}
+	});
+});
+
+
+function Save(ctl) {
+	var newQuantity = document.getElementById('newQuantity').value;
+	if(newQuantity=="")
+	{
+		$("#sal").html("Enter Quantity First!!");
+	}
+	else if(newQuantity!="")
+	{ 
+		if(newQuantity<0)
+		{
+			$("#sal").html("Invalid Quantity");
+		} 
+		else
+		{ 
+			$("#sal").html("");
+			$.ajax({
+		url:"http://localhost:63888/api/products/add/"+ $("#id").val(),
+		method:"PUT",
+		headers:"Content-Type:application/json",
+		headers:{
+					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
+		},
+		data:{
+			"id":$("#id").val(),
+			"productName":$("#productName").val(),
+			"productDescription":$("#productDescription").val(),
+			"quantity":$("#quantity").val(),
+			"newQuantity":$("#newQuantity").val(),
+			"brand":$("#brand").val(),
+			"category":$("#category").val(),
+			"features":$("#features").val(),
+			"status":$("#status").val(),
+			"buyingPrice":$("#buyingPrice").val(),
+			"sellingPrice":$("#sellingPrice").val(),
+			"images":$("#images").val(),
+			"dateAdded":$("#dateAdded").val(),
+			"discount":$("#discount").val(),
+			"tax":$("#tax").val(),
+			"lastUpdated":$("#lastUpdated").val()
+		},
+		complete:function(xmlHttp,status){
+			
+			if(xmlHttp.status==200)
+			{
+				window.location = "ProductList.html";
+			}
+			else
+			{
+				$("#msg").html(xmlHttp.status+":"+xmlHttp.statusText);
+				console.log(xmlHttp.status);
+			}
+		}
+	});
+		}
+	}
+	
+}
+}
+else if(Cookies.get('type')==2)
+{
+//se
+}
+else if(Cookies.get('type')==3)
+{
+//by
+}
+else if(Cookies.get('type')==4)
+{
+//cu
+}
+else
+{
+	window.location = "login.html";
+}
+    </script>
+</body>

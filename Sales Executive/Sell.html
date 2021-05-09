@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Executive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="./Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="./Contents/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="./Contents/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/aos/aos.css" rel="stylesheet">
+    <link href="./Contents/CSS_Files/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header {
+            overflow: hidden;
+            background-color: #f1f1f1;
+            padding: 40px 10px;
+        }
+
+            .header a {
+                float: left;
+                color: black;
+                text-align: center;
+                padding: 12px;
+                text-decoration: none;
+                font-size: 18px;
+                line-height: 25px;
+                border-radius: 4px;
+            }
+
+                .header a.logo {
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+
+                .header a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .header a.active {
+                    background-color: dodgerblue;
+                    color: white;
+                }
+
+        .header-right {
+            float: right;
+        }
+
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Sales Executive</a>
+        <div class="header-right">
+            <button type="button" class="btn-danger" id="logout">Logout</button> 
+          
+        </div>
+    </div>
+
+    <div class="w3-sidebar w3-bar-block w3-light-grey w3-card" style="width:130px">
+        <h5 class="w3-bar-item">Menu</h5>
+         
+
+  
+        <a href="Profile.html"class="w3-bar-item w3-button tablink"> Profile </a>
+        <a href="Products.html"class="w3-bar-item w3-button tablink"> Products </a>
+        <a href="SalesCart.html"class="w3-bar-item w3-button tablink"> Sales Cart </a>
+        <a href="SellChart.html"class="w3-bar-item w3-button tablink"> Chart </a>
+
+    </div>
+
+    <div style="margin-left:130px" id="load">
+
+        <div class="w3-container tab">
+            <div class="row mt-2 justify-content-center">
+                <div class=" col-12 text-center">
+        
+                    <h1>Cart</h1>
+                 <form>
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <td> Customer Name </td>
+                            <td><input type="text" id="FullName" name="cnames">  </td> 
+                            <td id="fn"></td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td><input type="text" id="Address" name="adds"></td>
+                            <td id="ad"></td>
+                        </tr>
+                        <tr>
+                            <td>Phone No. </td>
+                            <td><input type="text" id="Phone" name="phones"> </td> 
+                            <td id="ph"></td>
+                        </tr>
+
+                        <tbody id="tbody">
+                  
+                            <tr><td>  </td> <td style='color:blue'>Products List</td><td></td></tr> 
+
+                        </tbody>
+                        
+                 </form>
+                        
+                        </table>
+    </div>
+    <!-- <a href="" class="btn text-light btn-primary w-25 " id="sell">Sell</a><br><br> -->
+    <!-- <a href="Products.html" class="btn text-light btn-success w-25 ">Continue Selling</a> <br><br> -->
+    <button class="btn text-light btn-primary w-25" id="sell" >Sell</button>
+
+</body>
+
+</html>
+
+<script>
+
+
+
+    $(document).ready(function(){
+        
+
+    var body = $("#load");
+$.ajax({
+    type: "get",
+    url:"http://localhost:54047//api/SalesExecutive/Sell",
+    datatype: 'json',
+ 
+
+    complete:function(xmlHttp,status){
+        if(xmlHttp.status == 200)
+        {
+           // var oldProducts = "<table border='1' id='oldProductsList' cellspacing='0'><tr><th>Customer ID</th><th>Product Name</th><th>Product Description</th><th>Requested Price</th><th>Category</th><th>Brand</th><th>Features</th><th>Quantity</th><th>Options</th></tr>";
+            var cartData = xmlHttp.responseJSON;
+            var data;
+            var body = $("#tbody");
+           var totalp=0;
+            for (var i = 0; i < cartData.length; i++) {
+               
+                // profile="<table width='25%' class='table'><tr> <td>Product Id:</td> <td>"+profileData[i].ProductId+"</td> </tr>   <tr> <td>Product Name:</td> <td>"+profileData[i].ProductName+"</td> </tr>   <tr> <td>Email:</td> <td>"+profileData[i].Email+"</td> </tr>  <tr> <td>Phone:</td> <td>"+profileData[i].Phone+"</td></tr>  <tr> <td>Address:</td> <td>"+profileData[i].Address+"</td> </tr>  </table>";
+                              data= "<tr>" +
+                                
+                                "<td>" + cartData[i].ProductName + "</td>" +
+                                "<td>" + cartData[i].Category + "</td>" +
+                                "<td>" + cartData[i].Quantity + "</td>" +
+                              
+                                "</tr>";
+                                totalp= totalp +cartData[i].TotalPrice; 
+                                body.append(data);
+            }
+            body.append("<tr><td style='color:green' >Sub Total :"+totalp+"</td></tr>");
+      
+        }
+        else
+        {
+            $("#msg").html(xmlHttp.status+":"+xmlHttp.statusText);
+        }
+    }
+
+
+});
+$("#sell").click(function(){
+
+
+var cname = document.getElementById("FullName").value;
+var address = document.getElementById("Address").value;
+var phone = document.getElementById("Phone").value;
+
+
+var flag = false;
+
+if(cname == "")
+{
+    document.getElementById("fn").innerHTML = "*Customer Name Feild is Empty";
+    flag = true;
+}
+if(address == "")
+{
+    document.getElementById("ad").innerHTML = "*Address Feild is Empty";
+    flag = true;
+}
+if(phone == "")
+{
+    document.getElementById("ph").innerHTML = "*Phone No Feild is Empty";
+    flag = true;
+}
+
+
+
+if(!flag)
+{
+
+    $.ajax({
+        url:"http://localhost:54047//api/SalesExecutive/Sold",
+        type:"POST",
+        headers:"Content-Type:application/json",
+      
+        data:{
+                "fullName" :cname,
+                "address" :address,
+                "phone" :phone
+            },
+        complete:function(xmlHttp,status){
+            if(xmlHttp.status == 200)
+            {        alert("Products Sold");
+                    $('.alert').show();
+                    $("#alertMsg").text("Sold");
+                    window.location = "Products.html"
+            }
+            else
+            {       alert("Error");
+                    $('.alert').show();
+                    $("#alertMsg").text("Error!");
+            }
+        }
+    });
+}
+
+});
+
+});
+
+
+
+
+</script>
+<script>
+    $("#logout").click(function(){
+  window.location="Login.html";
+  //Cookies.set("Authorization",null);
+  Cookies.remove("Authorization");
+  
+});
+</script>

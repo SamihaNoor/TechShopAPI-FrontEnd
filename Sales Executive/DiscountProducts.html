@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Executive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="./Contents/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="./Contents/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="./Contents/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="./Contents/vendor/aos/aos.css" rel="stylesheet">
+    <link href="./Contents/CSS_Files/style.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header {
+            overflow: hidden;
+            background-color: #f1f1f1;
+            padding: 40px 10px;
+        }
+
+            .header a {
+                float: left;
+                color: black;
+                text-align: center;
+                padding: 12px;
+                text-decoration: none;
+                font-size: 18px;
+                line-height: 25px;
+                border-radius: 4px;
+            }
+
+                .header a.logo {
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+
+                .header a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .header a.active {
+                    background-color: dodgerblue;
+                    color: white;
+                }
+
+        .header-right {
+            float: right;
+        }
+
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Sales Executive</a>
+        <div class="header-right">
+            <button type="button" class="btn-danger" id="logout">Logout</button> 
+          
+        </div>
+    </div>
+
+    <div class="w3-sidebar w3-bar-block w3-light-grey w3-card" style="width:130px">
+        <h5 class="w3-bar-item">Menu</h5>
+     
+
+        <a href="Profile.html"class="w3-bar-item w3-button tablink"> Profile </a>
+        <a href="Products.html"class="w3-bar-item w3-button tablink"> Products </a>
+        <a href="SalesCart.html"class="w3-bar-item w3-button tablink"> Sales Cart </a>
+        <a href="SellChart.html"class="w3-bar-item w3-button tablink"> Chart </a>
+
+     
+
+    </div>
+
+    <div style="margin-left:130px" id="load">
+        <table width='25%' class='table'> <tr><th>Product Name</th><th>Product Description</th><th>Status</th><th>Buying Price</th><th>Selling Price</th><th>Category</th><th>Brand</th><th>Features</th><th>Quantity</th><th>Images</th><th>Discount</th><th>TAX</th><th>Date Added</th><th>Last Updated</th></tr>
+            <tbody id="tbody">
+
+            </tbody>
+        <div class="w3-container tab">
+            <div style="float:left"> <h2 style="text-align:center"> Product List </h2></div><br><br>
+            <div class="dropdown" style="float:left; padding:15px;">
+        
+                <button class="dropbtn" style="text-align:right">Filter By</button>
+                <div class="dropdown-content">
+                    
+                    <a href="AvailableProducts.html"class="w3-bar-item w3-button tablink"> Available Products</a>
+                    <a href="UpcomingProducts.html"class="w3-bar-item w3-button tablink"> Upcoming Products </a>
+                    <a href="DiscountProducts.html"class="w3-bar-item w3-button tablink"> Discount Products </a>
+            </div>
+        </div>
+        
+            <div style="float:right">
+                <!-- <h7>Search By: </h7>
+                <select id="SearchBy" style="float:right">
+                    <option value="Name">Name</option>
+                    <option value="Category">Category</option>
+                </select> <br>
+                <input type="text" id="SearchValue">
+                <input type="submit" id="SearchButton" value="Search" style="float:right"> -->
+               <br> <input type="text" id="searcAny" placeholder="Search here by anything" style="float:right; width:270px;">
+            </div>
+        
+        
+            <br>
+            <br>
+            <br>
+            <br>
+            <table class="table" border="1" id="all_products">
+                <tbody id="tbody">
+
+                </tbody>
+        
+            </table>
+            <a id="dlink" style="display:none;"></a>
+        
+            <input type="button" onclick="tableToExcel('all_products', 'Products', 'Products.xls')" value="Export to Excel" class="">
+        </div>
+    
+
+
+    </div>
+
+
+</body>
+</html>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#SearchButton").click(function () {
+                var SearchBy = $("#SearchBy").val();
+                var SearchValue = $("#SearchValue").val();
+                var body = $("#tbody");
+                body.html("");
+                $.ajax({
+                    type: "get",
+                    url: "/SalesExecutive/SearchBy" + SearchBy + "?SearchValue=" + SearchValue,
+                    datatype: 'json',
+    
+                    success: function (result) {
+    
+                        if (result.length != 0) {
+    
+    
+    
+                            $.each(JSON.parse(result), function (index, value) {
+    
+                                var Data = "<tr>" +
+                                    "<td>" + value.ProductName + "</td>" +
+                                    "<td>" + value.ProductDescription + "</td>" +
+                                    "<td>" + value.Status + "</td>" +
+                                    "<td>" + value.BuyingPrice + "</td>" +
+                                    "<td>" + value.SellingPrice + "</td>" +
+                                    "<td>" + value.Category + "</td>" +
+                                    "<td>" + value.Brand + "</td>" +
+                                    "<td>" + value.Features + "</td>" +
+                                    "<td>" + value.Quantity + "</td>" +
+                                    "<td>" + "<img src='" + value.Images + "' alt='Product Preview' width='100' height='100'>" + "</td>" +
+                                    "<td>" + value.Discount + "</td>" +
+                                    "<td>" + value.Tax + "</td>" +
+                                    "<td>" + value.DateAdded + "</td>" +
+                                    "<td>" + value.LastUpdated + "</td>" +
+                                    "<td>" + "<input type='number' id='quantity' name='quantity' min='1' max='" + value.Quantity + "' value='1' onchange='quantity(this.value)'>" + "<button class='btn btn-sm btn-block btn-success' id='' onclick='cart(" + value.Id + ")' value='" + value.Id + "'>Add to cart</button> </td>" +
+                                    "</tr>";
+                                var Data2 = "<tr>" +
+                                    "<td>" + value.ProductName + "</td>" +
+                                    "<td>" + value.ProductDescription + "</td>" +
+                                    "<td>" + value.Status + "</td>" +
+                                    "<td>" + value.BuyingPrice + "</td>" +
+                                    "<td>" + value.SellingPrice + "</td>" +
+                                    "<td>" + value.Category + "</td>" +
+                                    "<td>" + value.Brand + "</td>" +
+                                    "<td>" + value.Features + "</td>" +
+                                    "<td>" + value.Quantity + "</td>" +
+                                    "<td>" + "<img src='" + value.Images + "' alt='Product Preview' width='100' height='100'>" + "</td>" +
+                                    "<td>" + value.Discount + "</td>" +
+                                    "<td>" + value.Tax + "</td>" +
+                                    "<td>" + value.DateAdded + "</td>" +
+                                    "<td>" + value.LastUpdated + "</td>" +
+                                    "<td> </td>" +
+                                    "</tr>";
+                                if (value.Status == "In Stock") { body.append(Data); } else { body.append(Data2); }
+    
+    
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <script>
+        //ShoppingCart
+        var q = 1;
+        function quantity(qua) {
+            q = qua;
+        }
+    
+        function cart(id) {
+    
+            mydata = JSON.stringify({ "ProductId": id, "Quantity": q });
+            //alert(mydata);
+            cartAjax(mydata);
+            function cartAjax(mydata) { }
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:54047//api/SalesExecutive/AddProductToCart/"+id+"/"+q,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: mydata,
+                success: function (result) {
+                    alert(result.msg);
+                    $('.alert').show();
+                    $("#alertMsg").text("Added product to the cart!");
+                
+                }
+            });
+    
+    
+        }
+    
+    </script>
+    
+    <script>
+        var tableToExcel = (function () {
+            var uri = 'data:application/vnd.ms-excel;base64,'
+                , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+                , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+                , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+            return function (table, name, filename) {
+                if (!table.nodeType) table = document.getElementById(table)
+                var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+    
+                document.getElementById("dlink").href = uri + base64(format(template, ctx));
+                document.getElementById("dlink").download = filename;
+                document.getElementById("dlink").click();
+    
+            }
+        })()
+    
+    </script>
+    
+    <script>
+        $(document).ready(function () {
+            $('#searcAny').keyup(function () {
+                search_table($(this).val());
+            });
+            function search_table(value) {
+                $('#tbody tr').each(function () {
+                    var found = 'false';
+                    var x = this;
+                    $(this).each(function () {
+                        if ($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+                            found = 'true';
+                        }
+                    });
+                    if (found == 'true') {
+                        $(x).show();
+                    }
+                    else {
+                        $(x).hide();
+                    }
+                });
+            }
+        });
+    </script>
+
+    
+<script>
+    $(document).ready(function(){
+    var body = $("#load");
+$.ajax({
+    type: "get",
+    url:"http://localhost:54047//api/SalesExecutive/DiscountProducts",
+    datatype: 'json',
+ 
+
+    complete:function(xmlHttp,status){
+        if(xmlHttp.status == 200)
+        {
+           //oldProducts = "<table width='25%' class='table'> <tr><th>Product Name</th><th>Product Description</th><th>Status</th><th>Buying Price</th><th>Selling Price</th><th>Category</th><th>Brand</th><th>Features</th><th>Quantity</th><th>Images</th><th>Discount</th><th>TAX</th><th>Date Added</th><th>Last Updated</th></tr>";
+            var productData = xmlHttp.responseJSON;
+            var product;
+            var body = $("#tbody");
+            console.log(productData.length);
+            for (var i = 0; i < productData.length; i++) {
+               
+                //product="<td>"+profileData[i].FullName+"</td> <td>Userame:</td> <td>"+profileData[i].UserName+"</td> <td>Email:</td> <td>"+profileData[i].Email+"</td> </tr>  <tr> <td>Phone:</td> <td>"+profileData[i].Phone+"</td></tr>  <tr> <td>Address:</td> <td>"+profileData[i].Address+"</td> </tr>  </table>";
+                
+                   Data= "<tr>" +
+                                "<td>" + productData[i].ProductName + "</td>" +
+                                "<td>" + productData[i].ProductDescription + "</td>" +
+                                "<td>" + productData[i].Status + "</td>" +
+                                "<td>" + productData[i].BuyingPrice + "</td>" +
+                                "<td>" + productData[i].SellingPrice + "</td>" +
+                                "<td>" + productData[i].Category + "</td>" +
+                                "<td>" + productData[i].Brand + "</td>" +
+                                "<td>" + productData[i].Features + "</td>" +
+                                "<td>" + productData[i].Quantity + "</td>" +
+                                "<td>" + "<img src='" + productData[i].Images + "' alt='Product Preview' width='100' height='100'>" + "</td>" +
+                                "<td>" + productData[i].Discount + "</td>" +
+                                "<td>" + productData[i].Tax + "</td>" +
+                                "<td>" + productData[i].DateAdded + "</td>" +
+                                "<td>" + productData[i].LastUpdated + "</td>" +
+                                "<td>" + "<input type='number' id='quantity' name='quantity' min='1' max='" + productData[i].Quantity + "' value='1' onchange='quantity(this.value)'>" + "<button class='btn btn-sm btn-block btn-success' id='' onclick='cart(" + productData[i].Id + ")' value='" + productData[i].Id + "'>Add to cart</button> </td>" +
+                                "</tr>";
+
+                                var Data2 = "<tr>" +
+                                "<td>" + productData[i].ProductName + "</td>" +
+                                "<td>" + productData[i].ProductDescription + "</td>" +
+                                "<td>" + productData[i].Status + "</td>" +
+                                "<td>" + productData[i].BuyingPrice + "</td>" +
+                                "<td>" + productData[i].SellingPrice + "</td>" +
+                                "<td>" + productData[i].Category + "</td>" +
+                                "<td>" + productData[i].Brand + "</td>" +
+                                "<td>" + productData[i].Features + "</td>" +
+                                "<td>" + productData[i].Quantity + "</td>" +
+                                "<td>" + "<img src='" + productData[i].Images + "' alt='Product Preview' width='100' height='100'>" + "</td>" +
+                                "<td>" + productData[i].Discount + "</td>" +
+                                "<td>" + productData[i].Tax + "</td>" +
+                                "<td>" + productData[i].DateAdded + "</td>" +
+                                "<td>" + productData[i].LastUpdated + "</td>" +
+                                "<td> </td>" +
+                                "</tr>";
+                                if (productData[i].Status == "In Stock") { body.append(Data); } else { body.append(Data2); }
+                 
+            }
+           // oldProducts += "</table>"
+           body.append("</table>");
+        }
+        else
+        {
+            $("#msg").html(xmlHttp.status+":"+xmlHttp.statusText);
+        }
+    }
+
+
+});
+});
+
+</script>
+
+<script>
+    $("#logout").click(function(){
+  window.location="Login.html";
+  Cookies.set("Authorization",null);
+  
+  
+});
+</script>
+<script>
+    $("#logout").click(function(){
+  window.location="Login.html";
+  //Cookies.set("Authorization",null);
+  Cookies.remove("Authorization");
+  
+});
+</script>

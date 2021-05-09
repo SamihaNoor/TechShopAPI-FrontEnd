@@ -1,0 +1,330 @@
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>New Buying Agents</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+    <script src="../contents/js/jquery-3.6.0.js"></script>
+    <script src="../contents/js/bootstrap.min.js"></script>
+    <link href="../contents/css/bootstrap.css" rel="stylesheet" />
+    <script src="../contents/js/bootstrap.bundle.min.js"></script>
+    <link href="../contents/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../contents/css/icofont.min.css" rel="stylesheet">
+	<link href="../contents/css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<style>
+
+    .table-view tr:hover {
+        color: #212529;
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+
+    .table-view {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+    }
+
+    .table-view th,
+    .table-view td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+    }
+</style>
+</head>
+<body>
+    <header id="header" class="">
+        <div class="container d-flex align-items-center">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-1">
+
+                </div>
+
+                <div class="col-12 col-lg-12">
+                    <nav class="nav-menu d-none d-lg-block">
+
+                        <ul>
+                            <li class="dropdown-header">
+                                <a href="AdminDashboard.html">Dashboard</a>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="AdminProfile.html">Profile</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveAdmins.html">Admins</a>
+                                <ul>
+                                    <li><a href="ActiveAdmins.html">Active Admins</a></li>
+                                    <li><a href="NewAdmin.html">New Admin</a></li>
+                                    <li><a href="RestrictedAdmins.html">Restricted Admins</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveSalesExecutives.html">Sales Executives</a>
+                                <ul>
+                                    <li><a href="ActiveSalesExecutives.html">Active Sales Executive</a></li>
+                                    <li><a href="NewSalesExecutive.html">New Sales Executive</a></li>
+                                    <li><a href="RestrictedSalesExecutives.html">Restricted Sales Executive</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveBuyingAgents.html">BuyingAgents</a>
+                                <ul>
+                                    <li><a href="ActiveBuyingAgents.html">Active Buying Agents</a></li>
+                                    <li><a href="NewBuyingAgent.html">New Buying Agent</a></li>
+                                    <li><a href="RestrictedBuyingAgents.html">Restricted Buying Agents</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ProductList.html">Products</a>
+                                <ul>
+                                    <li><a href="ProductList.html">Products</a></li>
+                                    <li><a href="NewProduct.html">New Product</a></li>
+                                    <li><a href="OldProductList.html">Used Products</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="PurchaseList.html">Purchases</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="ActiveCustomers.html">Customers</a>
+                                <ul>
+                                    <li><a href="ActiveCustomers.html">Active Customers</a></li>
+                                    <li><a href="RestrictedCustomers.html">Restricted Customers</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="Sales.html">Sales</a>
+                            </li>
+                            <li class="dropdown-header">
+                                <a href="Profits.html">Profits</a>
+                            </li>
+                            <li class="drop-down">
+                                <a href="UpdateAdminProfile.html">Settings</a>
+                                <ul>
+                                    <li><a href="UpdateAdminProfile.html">Update Profile</a></li>
+                                    <li><a href="AdminChangePassword.html">Change Password</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-header">
+                                <a href="Logout">Logout</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </header>
+	<main id="main ">
+        <div class="container">
+            <br /><br /><br /><br /><br />
+            <div class="row mt-2 justify-content-center">
+                <div class="col-12 col-lg-4 text-center">
+                    <table class="table-view">
+                            <tr>
+                                <td colspan="2" align="center"><h3>Buying Agent Registration</h3></td>
+                            </tr>
+<tr>
+                                <td><label class="col-form-label-sm">Full Name</label></td>
+                                <td><input type="text" id="fullName"" name="fullName" class="form-control"/></td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center"><p id="fn"></p></td>
+                            </tr>
+                            <tr>
+                                <td><label class="col-form-label-sm">User Name</label></td>
+                                <td><input type="text" id="userName" name="userName" class="form-control" ></td>
+
+                            </tr>
+                            <tr><td colspan="2" align="center"><p id="un"></p></td>
+                            </tr>
+                            <tr>
+                                <td><label class="col-form-label-sm">Email</label></td>
+                                <td><input type="email" id="email" name="email" class="form-control"></td>
+
+                            </tr>
+                            <tr><td colspan="2" align="center"><p id="e"></p></td>
+                            </tr>
+                            <tr>
+                                <td><label class="col-form-label-sm">Phone</label></td>
+                                <td><input type="text" id="phone" name="phone" class="form-control"></td>
+
+                            </tr>
+                            <tr><td colspan="2" align="center"><p id="phn"></p></td></tr>
+                            <tr>
+                                <td><label class="col-form-label-sm">Address</label></td>
+                                <td><input type="text" id="address" name="address" class="form-control" /></td>
+
+                            </tr>
+							<tr><td colspan="2" align="center"><p id="add"></p></td></tr>
+							<tr>
+                                <td><label class="col-form-label-sm">Salary</label></td>
+                                <td><input type="text" id="salary" name="salary" class="form-control"/></td>
+
+                            </tr>
+                            <tr><td colspan="2" align="center"><p id="sal"></p></td></tr>
+							<tr><td colspan="2" align="center"><p id="msg"></p></td></tr>
+                            <tr><td colspan="2"><button id="Register" class="btn btn-block btn-success"/>Register</button></td></tr>
+                        </table>
+				</div>
+            </div>
+        </div>
+    </main>
+</body>	
+
+<script>
+if(Cookies.get('type')==1)
+{
+$(document).ready(function(){
+	
+		var fullName = document.getElementById('fullName').value;
+		var userName = document.getElementById('userName').value;
+		var email = document.getElementById('email').value;
+		var phone = document.getElementById('phone').value;
+		var address = document.getElementById('address').value;
+		var salary = document.getElementById('salary').value;
+		
+		
+		$("#fullName").keyup(function()
+		{
+			var fullName = document.getElementById('fullName').value;
+			if(fullName==""){$("#fn").html("Enter Full Name First!!");}
+			else if(fullName!=""){$("#fn").html("");}
+		});
+		
+		$("#fullName").blur(function()
+		{
+			var fullName = document.getElementById('fullName').value;
+			if(fullName==""){$("#fn").html("Enter Full Name First!!");}
+			else if(fullName!=""){$("#fn").html("");}
+		});
+		
+		$("#userName").keyup(function()
+		{
+			var userName = document.getElementById('userName').value;
+			if(userName==""){$("#un").html("Enter User Name First!!");}
+			else if(userName!=""){$("#un").html("");}
+		});
+		
+		$("#userName").blur(function()
+		{
+			var userName = document.getElementById('userName').value;
+			if(userName==""){$("#un").html("Enter User Name First!!");}
+			else if(userName!=""){$("#un").html("");}
+		});
+		
+		$("#email").keyup(function()
+		{	
+			var email = document.getElementById('email').value;
+			if(email==""){$("#e").html("Enter Email First!!");}
+			else if(email!=""){$("#e").html("");}
+		});
+		
+		$("#email").blur(function()
+		{
+			var email = document.getElementById('email').value;
+			if(email==""){$("#e").html("Enter Email First!!");}
+			else if(email!=""){$("#e").html("");}
+		});
+		
+		$("#phone").keyup(function()
+		{
+			var phone = document.getElementById('phone').value;
+			if(phone==""){$("#phn").html("Enter phone First!!");}
+			else if(phone!=""){$("#phn").html("");}
+		});
+		
+		$("#phone").blur(function()
+		{
+			var phone = document.getElementById('phone').value;
+			if(phone==""){$("#phn").html("Enter phone First!!");}
+			else if(phone!=""){$("#phn").html("");}
+		});
+
+		$("#address").keyup(function()
+		{
+			var address = document.getElementById('address').value;
+			if(address==""){$("#add").html("Enter address First!!");}
+			else if(address!=""){$("#add").html("");}
+		});
+		
+		$("#address").blur(function()
+		{
+			var address = document.getElementById('address').value;
+			if(address==""){$("#add").html("Enter address First!!");}
+			else if(address!=""){$("#add").html("");}
+		});
+		
+		$("#salary").keyup(function()
+		{
+			var salary = document.getElementById('salary').value;
+			if(salary==""){$("#sal").html("Enter salary First!!");}
+			else if(salary!=""){ if(salary<20000){$("#sal").html("Invalid Salary");} else{ $("#sal").html("");}}
+		});
+		
+		$("#salary").blur(function()
+		{
+			var salary = document.getElementById('salary').value;
+			if(salary==""){$("#sal").html("Enter salary First!!");}
+			else if(salary!=""){ if(salary<20000){$("#sal").html("Invalid Salary");} else{ $("#sal").html("");}}
+		});
+		
+	$("#Register").click(function(){
+		
+			$.ajax({
+			url:"http://localhost:63888/api/buyingagents",
+			method:"POST",
+			headers:"Content-Type:application/json",
+			headers:{
+						"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
+			},
+			data:{
+				"fullName":$("#fullName").val(),
+				"userName":$("#userName").val(),
+				"email":$("#email").val(),
+				"password":$("#userName").val() + "1458",
+				"phone":$("#phone").val(),
+				"address":$("#address").val(),
+				"salary":$("#salary").val()
+			},
+			complete:function(xmlHttp,status){
+			console.log($("#fullName").val());
+			console.log($("#userName").val());
+			console.log($("#email").val());
+			console.log($("#address").val());
+			console.log($("#salary").val());
+				if(xmlHttp.status==201)
+				{
+					window.location = "ActiveBuyingAgents.html";
+				}
+				else
+				{
+					$("#msg").html("Please Check Again");
+				}
+			}
+			});
+		});
+	});
+}
+else if(Cookies.get('type')==2)
+{
+//se
+}
+else if(Cookies.get('type')==3)
+{
+//by
+}
+else if(Cookies.get('type')==4)
+{
+//cu
+}
+else
+{
+	window.location = "login.html";
+}
+</script>
