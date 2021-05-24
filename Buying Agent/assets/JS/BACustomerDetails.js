@@ -16,7 +16,7 @@ $(document).ready(function(){
 	}
 	Cookies.set("customerId", customerId);
 	$.ajax({
-		url:"http://localhost:56213/api/ba_customer/purchase_history/"+customerId,
+		url:"http://localhost:1485/api/ba_customer/purchase_history/"+customerId,
 		headers:{
         	"Authorization":"basic "+Cookies.get("Authenticatior")
     	},

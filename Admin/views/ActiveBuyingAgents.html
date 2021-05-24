@@ -115,7 +115,7 @@
                             </li>
 
                             <li class="dropdown-header">
-                                <a href="Logout">Logout</a>
+                                <a href="Logout.html">Logout</a>
                             </li>
                         </ul>
                     </nav>
@@ -172,7 +172,7 @@ if(Cookies.get('type')==1)
         $(document).ready(function(){
 	
 			$.ajax({
-				url:"http://localhost:63888/api/buyingagents",
+				url:"http://localhost:1485/api/buyingagents",
 				method: "GET",
 				headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
@@ -216,7 +216,7 @@ if(Cookies.get('type')==1)
 $("#loadbtn").click(function(){
 
 		$.ajax({
-				url:"http://localhost:63888/api/buyingagents",
+				url:"http://localhost:1485/api/buyingagents",
 				method: "GET",
 				headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
@@ -260,7 +260,7 @@ $("#loadbtn").click(function(){
 	$("#SearchByName").keyup(function(){
 
 		$.ajax({
-				url:"http://localhost:63888/api/buyingagents/name",
+				url:"http://localhost:1485/api/buyingagents/name",
 				method: "GET",
 				data:{
 					"Name":$("#SearchByName").val()
@@ -308,7 +308,7 @@ function Block(ctl) {
     var id = $(ctl).data("id");
             
     $.ajax({
-        url: "http://localhost:63888/api/buyingagents/Block/" + id,
+        url: "http://localhost:1485/api/buyingagents/Block/" + id,
         method: "PUT",
 		headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))

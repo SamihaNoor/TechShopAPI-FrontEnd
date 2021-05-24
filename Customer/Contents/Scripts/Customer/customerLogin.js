@@ -22,7 +22,7 @@ $(document).ready(function() {
             return false;
         } else {
             $.ajax({
-                url: "http://localhost:8081/Api/Customers/GetCustomerLoginValidation",
+                url: "http://localhost:1485/Api/Customers/GetCustomerLoginValidation",
                 method: "GET",
 
                 headers: {

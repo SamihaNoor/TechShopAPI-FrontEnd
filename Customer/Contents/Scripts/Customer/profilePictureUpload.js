@@ -14,7 +14,7 @@ $(document).ready(function() {
             // Make Ajax request with the contentType = false, and procesDate = false
             var ajaxRequest = $.ajax({
                 type: "POST",
-                url: "http://localhost:8081/Api/Customers/" + Cookies.get('user_id') + "/UploadProfilePicture",
+                url: "http://localhost:1485/Api/Customers/" + Cookies.get('user_id') + "/UploadProfilePicture",
                 contentType: false,
                 processData: false,
                 data: data
@@ -42,7 +42,7 @@ $(document).ready(function() {
             alert("No image is uploaded yet to remove!");
         } else {
             $.ajax({
-                url: "http://localhost:8081/Api/Customers/" + Cookies.get('user_id') + "/RemoveProfilePicture",
+                url: "http://localhost:1485/Api/Customers/" + Cookies.get('user_id') + "/RemoveProfilePicture",
                 method: "PUT",
                 complete: function(xmlHttp, status) {
                     if (xmlHttp.status == 200) {

@@ -4,7 +4,7 @@ $(document).ready(function() {
 
     function loadWishedListProducts() {
         $.ajax({
-            url: "http://localhost:8081/Api/WishList/1/Customer/" + Cookies.get('user_id'),
+            url: "http://localhost:1485/Api/WishList/1/Customer/" + Cookies.get('user_id'),
             method: "GET",
             headers: "Content-Type:application/json",
             complete: function(xmlHttp, status) {
@@ -18,7 +18,7 @@ $(document).ready(function() {
                         var flag = window.confirm("Are you sure you want to remove this product from wish list!");;
                         if (flag == true) {
                             $.ajax({
-                                url: "http://localhost:8081/Api/WishList/1/Customer/" + Cookies.get('user_id') + "/Product/" + this.value,
+                                url: "http://localhost:1485/Api/WishList/1/Customer/" + Cookies.get('user_id') + "/Product/" + this.value,
                                 method: "DELETE",
                                 headers: "Content-Type:application/json",
                                 complete: function(xmlHttp, status) {

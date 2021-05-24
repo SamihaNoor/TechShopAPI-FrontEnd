@@ -6,7 +6,7 @@ $(document).ready(function() {
     function showCustomerProfile() {
         var credentials = Cookies.get('user_email') + ":" + Cookies.get('user_password');
         $.ajax({
-            url: "http://localhost:8081/Api/Customers/" + Cookies.get('user_id'),
+            url: "http://localhost:1485/Api/Customers/" + Cookies.get('user_id'),
             method: "GET",
             headers: { "Authorization": "Basic " + btoa(credentials) },
             complete: function(xmlHttp, status) {
@@ -28,7 +28,7 @@ $(document).ready(function() {
             }
         })
         $.ajax({
-            url: "http://localhost:8081/Api/Customers/" + Cookies.get('user_id') + "/shipping",
+            url: "http://localhost:1485/Api/Customers/" + Cookies.get('user_id') + "/shipping",
             method: 'GET',
             headers: "Content-Type: application/json",
             complete: function(xmlHttp, status) {
@@ -73,7 +73,7 @@ $(document).ready(function() {
             shippingData.shippingMethod = $("#ShippingMethodId").val();
             console.log(JSON.stringify(shippingData));
             $.ajax({
-                url: "http://localhost:8081/Api/Shipping/" + ID,
+                url: "http://localhost:1485/Api/Shipping/" + ID,
                 method: "PUT",
                 headers: "Content-Type: application/json",
                 data: { "customerId": Cookies.get('user_id'), "cardType": shippingData.cardType, "cardNumber": shippingData.cardNumber, "expirationYear": shippingData.expirationYear, "expirationMonth": shippingData.expirationMonth, "shippingMethod": shippingData.shippingMethod, "shippingAddress": shippingData.shippingAddress },

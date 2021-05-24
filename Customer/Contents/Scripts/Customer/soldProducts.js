@@ -3,7 +3,7 @@ $(document).ready(function() {
     var date = new Date();
     $("#soldTable thead tr:nth-child(1) td:nth-child(1)").html("Date : " + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear());
     $.ajax({
-        url: "http://localhost:8081/Api/SellProducts/GetAllSoldOldProductByCustomerId/" + Cookies.get('user_id'),
+        url: "http://localhost:1485/Api/SellProducts/GetAllSoldOldProductByCustomerId/" + Cookies.get('user_id'),
         method: "GET",
         complete: function(xmlHttp, status) {
             if (xmlHttp.status == 200) {
@@ -26,7 +26,7 @@ $(document).ready(function() {
             type: 'GET',
             dataType: "json",
             contentType: "application/json",
-            url: 'http://localhost:8081/Api/SellProducts/GetMostSoldCategoriesByCustomerId/' + Cookies.get('user_id'),
+            url: 'http://localhost:1485/Api/SellProducts/GetMostSoldCategoriesByCustomerId/' + Cookies.get('user_id'),
             success: function(result) {
                 for (var i = 0; i < result.length; i++) {
                     soldData.push([result[i].key, result[i].value]);

@@ -17,7 +17,7 @@ $(document).ready(function() {
             $("#msg").html("Confirm passwords lenght must be between 8 and 20!");
         } else {
             $.ajax({
-                url: "http://localhost:8081/Api/Customers/" + Cookies.get('user_id') + "/ResetPassword",
+                url: "http://localhost:1485/Api/Customers/" + Cookies.get('user_id') + "/ResetPassword",
                 method: "PUT",
                 headers: "Content-Type: application/json",
                 data: { "password": newPassword },

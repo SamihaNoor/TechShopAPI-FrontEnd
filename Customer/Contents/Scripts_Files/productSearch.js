@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8081/Api/CustomerProducts/GetAllProductsName",
+        url: "http://localhost:1485/Api/CustomerProducts/GetAllProductsName",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function(result) {
@@ -17,7 +17,7 @@ $(document).ready(function() {
                 console.log(name);
                 $.ajax({
                     type: "GET",
-                    url: "http://localhost:8081/Api/CustomerProducts/" + name + "/Product",
+                    url: "http://localhost:1485/Api/CustomerProducts/" + name + "/Product",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(result) {

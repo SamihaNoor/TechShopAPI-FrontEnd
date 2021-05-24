@@ -21,7 +21,7 @@ $(document).ready(function() {
     function loadProduct() {
         loadAllReviews();
         $.ajax({
-            url: "http://localhost:8081/Api/CustomerProducts/" + productId,
+            url: "http://localhost:1485/Api/CustomerProducts/" + productId,
             type: "GET",
             contentType: "application/json",
             complete: function(xmlHttp, status) {
@@ -52,7 +52,7 @@ $(document).ready(function() {
                             alert("Please login first to add product to your wish list!");
                         } else {
                             $.ajax({
-                                url: "http://localhost:8081/Api/WishList",
+                                url: "http://localhost:1485/Api/WishList",
                                 method: "POST",
                                 headers: "Content-Type:application/json",
                                 data: {
@@ -88,7 +88,7 @@ $(document).ready(function() {
             alert("Please write a review!")
         } else {
             $.ajax({
-                url: "http://localhost:8081/Api/Reviews",
+                url: "http://localhost:1485/Api/Reviews",
                 method: "POST",
                 headers: "Content-Type:application/json",
                 data: {
@@ -117,7 +117,7 @@ $(document).ready(function() {
             userId = 1;
         }
         $.ajax({
-            url: "http://localhost:8081/Api/CustomerProducts/" + userId + "/Product/" + productId,
+            url: "http://localhost:1485/Api/CustomerProducts/" + userId + "/Product/" + productId,
             method: "GET",
             headers: "Content-Type: application/json",
             complete: function(xmlHttp, status) {
@@ -173,7 +173,7 @@ $(document).ready(function() {
                 //alert("The rating is set to " + rate + "!");
 
                 $.ajax({
-                    url: "http://localhost:8081/Api/Rating",
+                    url: "http://localhost:1485/Api/Rating",
                     method: "POST",
                     headers: "Content-Type:application/json",
                     data: {
@@ -198,7 +198,7 @@ $(document).ready(function() {
     function getProductAverageRating() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:8081/Api/CustomerProducts/" + productId + "/Rating",
+            url: "http://localhost:1485/Api/CustomerProducts/" + productId + "/Rating",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(result) {

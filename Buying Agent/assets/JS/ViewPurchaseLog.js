@@ -6,7 +6,7 @@ $(document).ready(function(){
 	}
 
 		$.ajax({
-		url:"http://localhost:56213/api/purchase_log",
+		url:"http://localhost:1485/api/purchase_log",
 		headers:{
         	"Authorization":"basic "+Cookies.get("Authenticatior")
     	},
@@ -39,7 +39,7 @@ function searchCat()
 	var searchedElment = document.getElementById('searchBox').value.toLowerCase();
 	var flag = false;
 		$.ajax({
-		url:"http://localhost:56213/api/purchase_log",
+		url:"http://localhost:1485/api/purchase_log",
 		headers:{
         	"Authorization":"basic "+Cookies.get("Authenticatior")
     	},
@@ -111,7 +111,7 @@ function searchByDate()
 	else
 	{
 		$.ajax({
-		url:"http://localhost:56213/api/purchase_log",
+		url:"http://localhost:1485/api/purchase_log",
 		headers:{
         	"Authorization":"basic "+Cookies.get("Authenticatior")
     	},
@@ -149,7 +149,7 @@ function sortPurchaseData()
 	var sortBy = document.getElementById("select").value;
 	
 	$.ajax({
-	url:"http://localhost:56213/api/purchase_log/sortBy/"+sortBy,
+	url:"http://localhost:1485/api/purchase_log/sortBy/"+sortBy,
 	headers:{
     	"Authorization":"basic "+Cookies.get("Authenticatior")
 	},

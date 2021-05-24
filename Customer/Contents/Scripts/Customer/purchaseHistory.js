@@ -4,7 +4,7 @@ $(document).ready(function() {
 
     function loadPurchaseHistory() {
         $.ajax({
-            url: "http://localhost:8081/Api/BuyProducts/GetPurchasedDataByCustomerId/" + Cookies.get("user_id"),
+            url: "http://localhost:1485/Api/BuyProducts/GetPurchasedDataByCustomerId/" + Cookies.get("user_id"),
             method: "GET",
             headers: "Content-Type:application/json",
             complete: function(xmlHttp, status) {
@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     function cancelOrder(e) {
         $.ajax({
-            url: "http://localhost:8081/Api/BuyProducts/" + e + "/CancelOrder",
+            url: "http://localhost:1485/Api/BuyProducts/" + e + "/CancelOrder",
             method: "GET",
             headers: "Content-Type: application/json",
             complete: function(xmlHttp, status) {

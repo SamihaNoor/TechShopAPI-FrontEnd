@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 	var email = Cookies.get("Email");
 	$.ajax({
-		url:"http://localhost:56213/api/buying_agent/",
+		url:"http://localhost:1485/api/buying_agent/",
 		method:"GET",
 		data:{
 			"email": email
@@ -32,7 +32,7 @@ $(document).ready(function(){
 	});
 
 	$.ajax({
-		url:"http://localhost:56213/api/old_product",
+		url:"http://localhost:1485/api/old_product",
 	    headers:{
             "Authorization":"basic "+Cookies.get("Authenticatior")
         },
@@ -87,7 +87,7 @@ $(document).ready(function(){
 	    if(aId)
 	    {
 	    	$.ajax({
-			url:"http://localhost:56213/api/old_product/accept/"+aId,
+			url:"http://localhost:1485/api/old_product/accept/"+aId,
 			method:"POST",
 			headers:"Content-Type:application/json",
 			headers:{
@@ -110,7 +110,7 @@ $(document).ready(function(){
 	    else if(rId)
 	    {
 	    	$.ajax({
-			url:"http://localhost:56213/api/old_product/reject/"+rId,
+			url:"http://localhost:1485/api/old_product/reject/"+rId,
 			method:"PUT",
 			headers:"Content-Type:application/json",
 			headers:{
@@ -138,7 +138,7 @@ function searchCategory()
 	var searchedElment = document.getElementById('searchBoxHome').value.toLowerCase();
 	var flag = false;
 		$.ajax({
-		url:"http://localhost:56213/api/old_product",
+		url:"http://localhost:1485/api/old_product",
 		headers:{
             	"Authorization":"basic "+Cookies.get("Authenticatior")
         },

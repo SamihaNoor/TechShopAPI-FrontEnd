@@ -48,7 +48,7 @@ $(document).ready(function() {
     function loadPaymentDetails() {
         var credentials = Cookies.get('user_credentials');
         $.ajax({
-            url: "http://localhost:8081/Api/Customers/1/shipping",
+            url: "http://localhost:1485/Api/Customers/1/shipping",
             method: "GET",
             headers: "Content-Type:application/json",
             complete: function(xmlHttp, status) {
@@ -88,7 +88,7 @@ $(document).ready(function() {
             }
         });
         $.ajax({
-            url: "http://localhost:8081/Api/Customers/" + Cookies.get('user_id'),
+            url: "http://localhost:1485/Api/Customers/" + Cookies.get('user_id'),
             method: "GET",
             headers: {
                 "Authorization": "Basic " + btoa(credentials)
@@ -147,7 +147,7 @@ $(document).ready(function() {
             };
 
             $.ajax({
-                url: "http://localhost:8081/Api/BuyProducts",
+                url: "http://localhost:1485/Api/BuyProducts",
                 method: "POST",
                 headers: "Content-Type:application/json",
                 data: sellsData,
@@ -163,7 +163,7 @@ $(document).ready(function() {
             cart[i].quantity = cart[i].quantity - cart[i].selectedQuantity;
 
             $.ajax({
-                url: "http://localhost:8081/Api/CustomerProducts/" + Cookies.get('user_id'),
+                url: "http://localhost:1485/Api/CustomerProducts/" + Cookies.get('user_id'),
                 method: "PUT",
                 headers: "Content-Type:application/json",
                 data: cart[i],

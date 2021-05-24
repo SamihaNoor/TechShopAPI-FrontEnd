@@ -118,7 +118,7 @@
                             </li>
 
                             <li class="dropdown-header">
-                                <a href="Logout">Logout</a>
+                                <a href="Logout.html">Logout</a>
                             </li>
                         </ul>
                     </nav>
@@ -172,7 +172,7 @@
 {
 			$("#loadbtn").click(function(){
 				$.ajax({
-					url:"http://localhost:63888/api/purchaselogs",
+					url:"http://localhost:1485/api/purchaselogs",
 					method: "GET",
 					headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
@@ -243,7 +243,7 @@
 			
 			$("#SearchByName").keyup(function(){
 				$.ajax({
-					url:"http://localhost:63888/api/purchaselogs/name",
+					url:"http://localhost:1485/api/purchaselogs/name",
 					method: "GET",
 					headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))

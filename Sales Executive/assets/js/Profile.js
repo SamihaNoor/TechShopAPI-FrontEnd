@@ -2,7 +2,7 @@ $(document).ready(function(){
     var body = $("#load");
 $.ajax({
     type: "get",
-    url:"http://localhost:54047//api/SalesExecutive/Profile",
+    url:"http://localhost:63888//api/SalesExecutive/Profile",
     datatype: 'json',
  
 

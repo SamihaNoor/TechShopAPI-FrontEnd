@@ -115,7 +115,7 @@
                             </li>
 
                             <li class="dropdown-header">
-                                <a href="Logout">Logout</a>
+                                <a href="Logout.html">Logout</a>
                             </li>
                         </ul>
                     </nav>
@@ -171,7 +171,7 @@ if(Cookies.get('type')==1)
         $(document).ready(function(){
 	
 			$.ajax({
-				url:"http://localhost:63888/api/admins",
+				url:"http://localhost:1485/api/admins",
 				method: "GET",
 				headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
@@ -212,7 +212,7 @@ if(Cookies.get('type')==1)
 $("#loadbtn").click(function(){
 
 		$.ajax({
-				url:"http://localhost:63888/api/admins",
+				url:"http://localhost:1485/api/admins",
 				method: "GET",
 				headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
@@ -253,7 +253,7 @@ $("#loadbtn").click(function(){
 	$("#SearchByName").keyup(function(){
 
 		$.ajax({
-				url:"http://localhost:63888/api/admins/name",
+				url:"http://localhost:1485/api/admins/name",
 				method: "GET",
 				headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
@@ -299,7 +299,7 @@ function BlockAdmin(ctl) {
     var id = $(ctl).data("id");
             
     $.ajax({
-        url: "http://localhost:63888/api/admins/BlockAdmin/" + id,
+        url: "http://localhost:1485/api/admins/BlockAdmin/" + id,
         method: "PUT",
 		headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))

@@ -114,7 +114,7 @@
                             </li>
 
                             <li class="dropdown-header">
-                                <a href="Logout">Logout</a>
+                                <a href="Logout.html">Logout</a>
                             </li>
                         </ul>
                     </nav>
@@ -177,7 +177,7 @@ if(Cookies.get('type')==1)
         $(document).ready(function(){
 	
 			$.ajax({
-				url:"http://localhost:63888/api/customers/active",
+				url:"http://localhost:1485/api/customers/active",
 				method: "GET",
 				headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
@@ -226,7 +226,7 @@ if(Cookies.get('type')==1)
 $("#loadbtn").click(function(){
 
 		$.ajax({
-				url:"http://localhost:63888/api/customers/active",
+				url:"http://localhost:1485/api/customers/active",
 				method: "GET",
 				complete:function(xmlHttp,status){
 					if(xmlHttp.status==200)
@@ -272,7 +272,7 @@ $("#loadbtn").click(function(){
 	$("#SearchByName").keyup(function(){
 
 		$.ajax({
-				url:"http://localhost:63888/api/customers/active/name",
+				url:"http://localhost:1485/api/customers/active/name",
 				method: "GET",
 				data:{
 					"Name":$("#SearchByName").val()
@@ -323,7 +323,7 @@ function Block(ctl) {
     var customerId = $(ctl).data("id");
     console.log(customerId);        
     $.ajax({
-        url: "http://localhost:63888/api/customers/Block/" + customerId,
+        url: "http://localhost:1485/api/customers/Block/" + customerId,
         method: "PUT",
 		headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))

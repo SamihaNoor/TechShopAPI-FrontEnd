@@ -25,7 +25,7 @@ $(document).ready(function() {
             $("#msg").html("Price is required!");
         } else {
             $.ajax({
-                url: "http://localhost:8081/Api/SellProducts",
+                url: "http://localhost:1485/Api/SellProducts",
                 method: "POST",
                 headers: "Content-Type:application/json",
                 data: {

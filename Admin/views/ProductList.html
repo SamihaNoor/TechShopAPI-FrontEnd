@@ -118,7 +118,7 @@
                             </li>
 
                             <li class="dropdown-header">
-                                <a href="Logout">Logout</a>
+                                <a href="Logout.html">Logout</a>
                             </li>
                         </ul>
                     </nav>
@@ -173,7 +173,7 @@ if(Cookies.get('type')==1)
 	$("#loadbtn").click(function(){
 
 		$.ajax({
-			url:"http://localhost:63888/api/products",
+			url:"http://localhost:1485/api/products",
 			method: "GET",
 			headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
@@ -265,7 +265,7 @@ if(Cookies.get('type')==1)
 	$("#searchProductByName").keyup(function(){
 
 		$.ajax({
-			url:"http://localhost:63888/api/products/productName",
+			url:"http://localhost:1485/api/products/productName",
 			method: "GET",
 			headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))

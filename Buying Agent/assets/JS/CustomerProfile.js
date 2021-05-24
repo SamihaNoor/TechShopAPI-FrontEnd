@@ -7,7 +7,7 @@ $(document).ready(function(){
 	
 	var customerId = Cookies.get("customerId")
 	$.ajax({
-		url:"http://localhost:56213/api/ba_customer/"+customerId,
+		url:"http://localhost:1485/api/ba_customer/"+customerId,
 		method:"GET",
 		headers:{
         	"Authorization":"basic "+Cookies.get("Authenticatior")

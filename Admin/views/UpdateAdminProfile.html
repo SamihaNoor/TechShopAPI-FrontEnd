@@ -112,7 +112,7 @@
                             </li>
 
                             <li class="dropdown-header">
-                                <a href="Logout">Logout</a>
+                                <a href="Logout.html">Logout</a>
                             </li>
                         </ul>
                     </nav>
@@ -139,7 +139,7 @@
 				
 				
 				$.ajax({
-				url:"http://localhost:63888/api/admins/profile/",
+				url:"http://localhost:1485/api/admins/profile/",
 				method: "GET",
 				headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))
@@ -225,7 +225,7 @@
 			{
 				var id = $(ctl).data("id");
 				$.ajax({
-				url:"http://localhost:63888/api/admins/"+ id,
+				url:"http://localhost:1485/api/admins/"+ id,
 				method:"PUT",
 				headers:"Content-Type:application/json",
 				headers:{

@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     $.ajax({
         type: "GET",
-        url: 'http://localhost:56213/api/purchase_log/pie_chart',
+        url: 'http://localhost:1485/api/purchase_log/pie_chart',
         headers:"Content-Type:application/json",
         headers:{
             "Authorization":"basic "+Cookies.get("Authenticatior")

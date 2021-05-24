@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var data = null;
     $.ajax({
-        url: "http://localhost:8081/Api/SellProducts/GetAllPendingOldProductsByCustomerId/" + Cookies.get('user_id'),
+        url: "http://localhost:1485/Api/SellProducts/GetAllPendingOldProductsByCustomerId/" + Cookies.get('user_id'),
         method: "GET",
         headers: "Content-Type:application/json",
         complete: function(xmlHttp, status) {
@@ -16,7 +16,7 @@ $(document).ready(function() {
                     var r = window.confirm("Are you sure you want to delete this post?");
                     if (r == true) {
                         $.ajax({
-                            url: "http://localhost:8081/Api/SellProducts/" + this.value,
+                            url: "http://localhost:1485/Api/SellProducts/" + this.value,
                             method: "DELETE",
                             complete: function(xmlHttp, status) {
                                 if (xmlHttp.status == 204) {

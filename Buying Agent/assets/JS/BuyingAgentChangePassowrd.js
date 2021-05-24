@@ -8,7 +8,7 @@ $(document).ready(function(){
 	var id = Cookies.get("id");
 	var fullName, userName, password, email, phoneNumber, salary, address, joiningDate;
 	$.ajax({
-		url:"http://localhost:56213/api/buying_agent/"+id,
+		url:"http://localhost:1485/api/buying_agent/"+id,
 		headers:{
         	"Authorization":"basic "+Cookies.get("Authenticatior")
     	},
@@ -87,7 +87,7 @@ $(document).ready(function(){
 		{
 
 			$.ajax({
-				url:"http://localhost:56213/api/buying_agent/update_password/"+id,
+				url:"http://localhost:1485/api/buying_agent/update_password/"+id,
 				method:"PUT",
 				headers:"Content-Type:application/json",
 				headers:{

@@ -1,7 +1,7 @@
 ﻿$(document).ready(function() {
     //alert('Hi');
     $.ajax({
-        url: "http://localhost:8081/Api/CustomerProducts/GetAllCategories",
+        url: "http://localhost:1485/Api/CustomerProducts/GetAllCategories",
         method: "GET",
         headers: "Content-Type:application/json",
         complete: function(xmlHttp, status) {
@@ -36,7 +36,7 @@
 
         $.ajax({
             type: "GET",
-            url: "http://localhost:8081/Api/CustomerProducts/GetProductsByCategory/" + this.value,
+            url: "http://localhost:1485/Api/CustomerProducts/GetProductsByCategory/" + this.value,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(result) {
@@ -58,7 +58,7 @@
         //alert(this.value);
         $.ajax({
             type: "GET",
-            url: "http://localhost:8081/Api/CustomerProducts/" + this.value,
+            url: "http://localhost:1485/Api/CustomerProducts/" + this.value,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(result) {
@@ -86,7 +86,7 @@
     $("#product1SelectBox").on("change", function() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:8081/Api/CustomerProducts/" + this.value,
+            url: "http://localhost:1485/Api/CustomerProducts/" + this.value,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(result) {

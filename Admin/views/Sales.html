@@ -96,7 +96,7 @@
                             </li>
 
                             <li class="dropdown-header">
-                                <a href="Logout">Logout</a>
+                                <a href="Logout.html">Logout</a>
                             </li>
                         </ul>
                     </nav>
@@ -165,7 +165,7 @@
 if(Cookies.get('type')==1)
 {
                         $(document).ready(function () {
-                            $.getJSON("http://localhost:63888/api/sales_log/getdatasalescategory", function (data) {
+                            $.getJSON("http://localhost:1485/api/sales_log/getdatasalescategory", function (data) {
                                 var Names = []
                                 var Qts = []
                                 for (var i = 0; i < data.length; i++) {
@@ -210,7 +210,7 @@ if(Cookies.get('type')==1)
 
 
                         $(document).ready(function () {
-                            $.getJSON("http://localhost:63888/api/sales_log/getdatasalesbrand", function (data) {
+                            $.getJSON("http://localhost:1485/api/sales_log/getdatasalesbrand", function (data) {
                                 var Names = []
                                 var Qts = []
                                 for (var i = 0; i < data.length; i++) {
@@ -256,7 +256,7 @@ if(Cookies.get('type')==1)
 /*$(#Loadbtn).click(function () {
 	$.ajax({
 		dataType: "json",
-		url: "http://localhost:63888/api/sales_log",
+		url: "http://localhost:1485/api/sales_log",
 		data:{
 				"StartDate":$("#StartDate").val(),
 				"EndDate":$("#EndDate").val()

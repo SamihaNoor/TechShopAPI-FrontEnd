@@ -5,7 +5,7 @@ $(document).ready(function() {
     function showCustomerProfile() {
         var credentials = Cookies.get('user_email') + ":" + Cookies.get('user_password');
         $.ajax({
-            url: "http://localhost:8081/Api/Customers/" + Cookies.get('user_id'),
+            url: "http://localhost:1485/Api/Customers/" + Cookies.get('user_id'),
             method: "GET",
             headers: { "Authorization": "Basic " + btoa(credentials) },
             complete: function(xmlHttp, status) {

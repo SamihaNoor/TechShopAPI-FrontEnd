@@ -11,7 +11,7 @@ $(document).ready(function() {
             alert("Email must be min. 10 characters and maximum 50 characters!");
         } else {
             $.ajax({
-                url: "http://localhost:8081/Api/Customers/CheckValidEmail",
+                url: "http://localhost:1485/Api/Customers/CheckValidEmail",
                 method: "POST",
                 headers: "Content-Type:application/json",
                 data: { "email": email },

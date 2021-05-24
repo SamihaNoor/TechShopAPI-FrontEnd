@@ -113,7 +113,7 @@
                             </li>
 
                             <li class="dropdown-header">
-                                <a href="Logout">Logout</a>
+                                <a href="Logout.html">Logout</a>
                             </li>
                         </ul>
                     </nav>
@@ -152,7 +152,7 @@ if(Cookies.get('type')==1)
 		var id = myurl.searchParams.get('id');
 		
 		$.ajax({
-        url: "http://localhost:63888/api/reviews/product/" + id,
+        url: "http://localhost:1485/api/reviews/product/" + id,
         method: "GET",
 		headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))

@@ -115,7 +115,7 @@ $(document).ready(function() {
 
     $("#addToCartBtn").click(function() {
         $.ajax({
-            url: "http://localhost:8081/Api/CustomerProducts/" + this.value,
+            url: "http://localhost:1485/Api/CustomerProducts/" + this.value,
             method: "GET",
             headers: "Content-Type:application/json",
             complete: function(xmlHttp, status) {

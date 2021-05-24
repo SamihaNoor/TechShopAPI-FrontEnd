@@ -7,7 +7,7 @@ $(document).ready(function() {
     function loadAllProducts() {
         //var allProducts = null;
         $.ajax({
-            url: 'http://localhost:8081/Api/CustomerProducts',
+            url: 'http://localhost:1485/Api/CustomerProducts',
             method: 'GET',
             dataType: 'json',
             contentType: 'application/json',
@@ -37,7 +37,7 @@ $(document).ready(function() {
                         alert("Please login first to add product to your wish list!");
                     } else {
                         $.ajax({
-                            url: "http://localhost:8081/Api/WishList",
+                            url: "http://localhost:1485/Api/WishList",
                             method: "POST",
                             headers: "Content-Type:application/json",
                             data: {

@@ -11,7 +11,7 @@ $(document).ready(function(){
 	var joiningDate;
 
 	$.ajax({
-		url:"http://localhost:56213/api/buying_agent/"+id,
+		url:"http://localhost:1485/api/buying_agent/"+id,
 		headers:{
         	"Authorization":"basic "+Cookies.get("Authenticatior")
     	},
@@ -155,7 +155,7 @@ $(document).ready(function(){
 		{
 			var id = 4;
 			$.ajax({
-				url:"http://localhost:56213/api/buying_agent/"+id,
+				url:"http://localhost:1485/api/buying_agent/"+id,
 				method:"PUT",
 				headers:"Content-Type:application/json",
 				headers:{

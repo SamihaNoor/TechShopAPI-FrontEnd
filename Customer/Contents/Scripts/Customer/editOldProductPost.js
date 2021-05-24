@@ -12,7 +12,7 @@ $(document).ready(function() {
         console.log("Issues with Parsing URL Parameter's - " + err);
     }
     $.ajax({
-        url: "http://localhost:8081/Api/SellProducts/" + oldProductId,
+        url: "http://localhost:1485/Api/SellProducts/" + oldProductId,
         method: "GET",
         complete: function(xmlHttp, status) {
             if (xmlHttp.status == 200) {
@@ -66,7 +66,7 @@ $(document).ready(function() {
             console.log(postData);
 
             $.ajax({
-                url: "http://localhost:8081/Api/SellProducts/" + oldProductId,
+                url: "http://localhost:1485/Api/SellProducts/" + oldProductId,
                 method: "PUT",
                 headers: "Content-Type:application/json",
                 data: postData,

@@ -39,7 +39,7 @@ $(document).ready(function() {
         } else {
             var date = new Date();
             $.ajax({
-                url: "http://localhost:8081/Api/Customers",
+                url: "http://localhost:1485/Api/Customers",
                 method: "POST",
                 headers: "Content-Type:application/json",
                 data: {

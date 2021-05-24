@@ -112,7 +112,7 @@
                             </li>
 
                             <li class="dropdown-header">
-                                <a href="Logout">Logout</a>
+                                <a href="Logout.html">Logout</a>
                             </li>
                         </ul>
                     </nav>
@@ -138,7 +138,7 @@
 				$(document).ready(function(){
 				
 				$.ajax({
-				url:"http://localhost:63888/api/admins/profile/",
+				url:"http://localhost:1485/api/admins/profile/",
 				method: "GET",
 				headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))

@@ -122,7 +122,7 @@
 					if(Cookies.get('type')==1)
 					{
                         $(document).ready(function () {
-                            $.getJSON("http://localhost:63888/api/sales_log/getdatacategory", function (data) {
+                            $.getJSON("http://localhost:1485/api/sales_log/getdatacategory", function (data) {
                                 var Names = []
                                 var Qts = []
                                 for (var i = 0; i < data.length; i++) {
@@ -167,7 +167,7 @@
 
 
                         $(document).ready(function () {
-                            $.getJSON("http://localhost:63888/api/sales_log/getdatabrand", function (data) {
+                            $.getJSON("http://localhost:1485/api/sales_log/getdatabrand", function (data) {
                                 var Names = []
                                 var Qts = []
                                 for (var i = 0; i < data.length; i++) {

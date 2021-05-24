@@ -107,13 +107,14 @@ $(document).ready(function(){
 			if(password != "" && email != "")
 			{
 				$.ajax({
-				url:"http://localhost:63888/api/credentials",
+				url:"http://localhost:1485/api/credentials",
 				method:"GET",
 				data:{
 					"email":$("#email").val(),
 					"password":$("#password").val()
 				},
 				complete:function(xmlHttp,status){
+					console.log(xmlHttp.status);
 					if(xmlHttp.status==200)
 					{
 						var data=xmlHttp.responseJSON;
@@ -129,14 +130,41 @@ $(document).ready(function(){
 						else if(data.type == 2)
 						{
 							// sales executive
+							window.location = "../../Sales Executive/Profile.html";
+							//document.cookie = "auth="+ data.Email+":"+data.Password;
+							
+							Cookies.set("Authorization",btoa(data.Email+":"+data.Password));
 						}
 						else if(data.type == 3)
 						{
 							// Buying Agent
+							var value= data.email+":"+data.password;
+							Cookies.set("Authenticatior",btoa(value));
+							Cookies.set("Email", data.email);
+							Cookies.set("Login", 1);
+							window.location = "../../Buying Agent/BuyingAgentHome.html";
 						}
 						else if(data.type == 4)
 						{
 							// customer
+							console.log(data);
+							Cookies.set('user_id', data.customerId);
+							Cookies.set('user_name', data.userName);
+							Cookies.set('user_email', data.email);
+							Cookies.set('user_status', data.status);
+							Cookies.set('user_password', data.password);
+							Cookies.set('user_credentials', credentials);
+							Cookies.set('user_profilePic', data.profilePic);
+
+							if (Cookies.get('user_status') === "Active") {
+								window.location.href = "../../Customer/Views/Customer/Home/Index.html";
+							} else {
+								$("#msg").html("Sorry, You dont have permission to sign in currently!");
+								Cookies.remove('user_id');
+								Cookies.remove('user_name');
+								Cookies.remove('user_email');
+								Cookies.remove('user_status');
+							}
 						}
 						else
 						{

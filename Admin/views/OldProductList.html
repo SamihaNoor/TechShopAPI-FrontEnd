@@ -116,7 +116,7 @@
                             </li>
 
                             <li class="dropdown-header">
-                                <a href="Logout">Logout</a>
+                                <a href="Logout.html">Logout</a>
                             </li>
                         </ul>
                     </nav>
@@ -181,7 +181,7 @@
 			$("#categoryLoad").click(function(){
 		
 				$.ajax({
-					url:"http://localhost:63888/api/oldproducts",
+					url:"http://localhost:1485/api/oldproducts",
 					method: "GET",
 					headers:{
 					"Authorization":"Basic "+btoa(Cookies.get('email')+':'+Cookies.get('password'))

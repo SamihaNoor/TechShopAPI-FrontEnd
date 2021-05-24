@@ -6,7 +6,7 @@ $(document).ready(function(){
 	}
 
 	$.ajax({
-		url:"http://localhost:56213/api/buying_agent/"+Cookies.get("id"),
+		url:"http://localhost:1485/api/buying_agent/"+Cookies.get("id"),
 		headers:{
         	"Authorization":"basic "+Cookies.get("Authenticatior")
     	},
